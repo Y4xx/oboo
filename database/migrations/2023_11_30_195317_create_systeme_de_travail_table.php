@@ -14,15 +14,13 @@ class CreateSystemeDeTravailTable extends Migration
     public function up()
     {
         Schema::create('systeme_de_travail', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->date('datedebut');
-            $table->date('datefin');
-            $table->integer('nbjourconge');
-            $table->boolean('certifier');
-            $table->string('remaeque');
-            // define the foreign key
-            $table->foreignId('idemploye')->references('id')->on('employé');
+            $table->integer('nbjour');
+            $table->integer('nbheure');
+            $table->boolean('avecsamedi');
+            $table->integer('nbheuresamedi');
             $table->timestamps();
+            // define the foreign key
+            $table->foreignId('id')->references('id')->on('employé');
         });
     }
 
