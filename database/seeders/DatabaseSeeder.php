@@ -22,9 +22,18 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'),
         ]);
+        $user= User::create([
+            'name' => 'Y4x',
+            'email' => 'Y4x@gmail.com',
+            'password' => Hash::make('admin123'),
+        ]);
         $role = Role::create([
             'slug' => 'admin',
             'name' => 'Adminstrator',
+        ]);
+        $role = Role::create([
+            'slug' => 'employer',
+            'name' => 'Employer',
         ]);
         $user->roles()->sync($role->id);
     }

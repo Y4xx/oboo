@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\EmployerMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,6 +66,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'Role' => \App\Http\Middleware\RoleMiddleware::class,
+        'isAdmin' => \App\Http\Middleware\EmployerMiddleware::class,    
     ];
     protected $middlewarePriority = [
         \Illuminate\Session\Middleware\StartSession::class,

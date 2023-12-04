@@ -1,10 +1,11 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployéTable extends Migration
+class CreateAdminTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +14,13 @@ class CreateEmployéTable extends Migration
      */
     public function up()
     {
-        Schema::create('employé', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('admin', function (Blueprint $table) {
+            $table->id();
             $table->string('fullname');
             $table->string('email');
-            $table->integer('nbjourconge');
-            $table->integer('salaire');
-            $table->integer('idsystem');
-            $table->integer('idtype_employer');
+            $table->string('password');
+            $table->rememberToken();
+            // define the foreign key
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateEmployéTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employé');
+        Schema::dropIfExists('admin');
     }
 }

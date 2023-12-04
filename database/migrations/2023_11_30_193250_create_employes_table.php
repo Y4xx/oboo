@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdminTable extends Migration
+class CreateEmployesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,16 @@ class CreateAdminTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin', function (Blueprint $table) {
+        Schema::create('employes', function (Blueprint $table) {
+            $table->id();
             $table->string('fullname');
             $table->string('email');
-            // define the foreign key
-            $table->foreignId('id')->references('id')->on('employé');
+            $table->string('password');
+            $table->integer('numTel');
+            $table->integer('nbjourconge');
+            $table->integer('salaire');
+            $table->integer('idtype_employer');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ class CreateAdminTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('employes');
     }
 }

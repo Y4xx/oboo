@@ -1,3 +1,5 @@
+
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,9 +16,13 @@ class CreatePointageTable extends Migration
     public function up()
     {
         Schema::create('pointage', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->date('datedepointage');
-            $table->foreignId('idemploye')->references('id')->on('employé');
+            $table->id();
+            $table->foreignId('idemploye')->references('id')->on('employes');
+            $table->time('tempsMatain-1')->default('00:00');
+            $table->time('tempsMatain-2')->default('00:00');
+            $table->time('tempsMedi-1')->default('00:00');
+            $table->time('tempsMedi-2')->default('00:00');
+            $table->date('dateDePointage');
             $table->timestamps();
         });
     }

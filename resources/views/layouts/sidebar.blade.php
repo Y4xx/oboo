@@ -26,6 +26,16 @@
                             </li>
 
                             <li class="menu-title">Management</li>
+                            <li>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-user"></i><span> Gestion <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="/schedule" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="dripicons-view-apps"></i><span>System de Trvail</span></a>
+                                    </li>
+                                   
+                                </ul>
+                            </li>
+
 
                             <li class="">
                                 <a href="/schedule" class="waves-effect {{ request()->is("schedule") || request()->is("schedule/*") ? "mm active" : "" }}">

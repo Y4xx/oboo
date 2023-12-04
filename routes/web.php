@@ -14,7 +14,7 @@ Route::get('attended/{user_id}', '\App\Http\Controllers\AttendanceController@att
 Route::get('attended-before/{user_id}', '\App\Http\Controllers\AttendanceController@attendedBefore' )->name('attendedBefore');
 Auth::routes(['register' => false, 'reset' => false]);
 
-Route::group(['middleware' => ['auth', 'Role'], 'roles' => ['admin']], function () {
+Route::middleware(['auth','isAdmin'])->group(function () {
     Route::resource('/employees', '\App\Http\Controllers\EmployeeController');
     Route::resource('/employees', '\App\Http\Controllers\EmployeeController');
     Route::get('/attendance', '\App\Http\Controllers\AttendanceController@index')->name('attendance');
@@ -32,17 +32,13 @@ Route::group(['middleware' => ['auth', 'Role'], 'roles' => ['admin']], function 
     Route::post('check-store','\App\Http\Controllers\CheckController@CheckStore')->name('check_store');
 
 });
-
-Route::group(['middleware' => ['auth']], function () {
-});
-
-Route::get('/employee', [EmployeeController::class, 'EmployeeIU'])->name('EmployeeIU.index');
-
+// Route::middleware(['auth','isEmployer'])->group(function () {
+  // });
+  
+  Route::get('/employer', [EmployeeController::class, 'EmployeeIU'])->name('EmployeeIU.index');
 
  Route::get('/leave/assign', function () {
    return view('attendance_leave_login');
  })->name('leave.login');
 
 Route::post('/leave/assign', '\App\Http\Controllers\LeaveController@assign')->name('leave.assign');
-
-
