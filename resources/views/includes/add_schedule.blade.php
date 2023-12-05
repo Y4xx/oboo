@@ -7,34 +7,70 @@
                     <span aria-hidden="true">&times;</span></button>
               
             </div>
-            <h4 class="modal-title"><b>Add Schedule</b></h4>
+            <h4 class="modal-title"><b>Add System de Travail</b></h4>
             <div class="modal-body text-left">
                 <form class="form-horizontal" method="POST" action="{{ route('schedule.store') }}">
                     @csrf
                     <div class="form-group">
-                        <label for="name" class="col-sm-3 control-label">Name</label>
+                        <label for="name" class="control-label">Name</label>
 
                         
                             <div class="bootstrap-timepicker">
-                                <input type="text" class="form-control timepicker" id="name" name="slug">
+                                <input type="text" class="form-control timepicker" id="name" name="name">
                             </div>
                         
                     </div>
-                    <div class="form-group">
-                        <label for="time_in" class="col-sm-3 control-label">Time In</label>
+
+                    {{-- Matain - Form --}}
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="debuMatain" class="control-label">Debut Matain</label>
 
                         
                             <div class="bootstrap-timepicker">
-                                <input type="time" class="form-control timepicker" id="time_in" name="time_in" required>
+                                <input type="time" class="form-control timepicker" id="" name="debuMatain" required>
                             </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="finMatain" class="control-label">Fin Matain</label>
+
+                        
+                            <div class="bootstrap-timepicker">
+                                <input type="time" class="form-control timepicker" id="" name="finMatain" required>
+                            </div>
+                        </div>
                         
                     </div>
-                    <div class="form-group">
-                        <label for="time_out" class="col-sm-3 control-label">Time Out</label>
+
+                    {{-- Medi - Form --}}
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="debuMedi" class="control-label">Debut Medi</label>
 
                         
                             <div class="bootstrap-timepicker">
-                                <input type="time" class="form-control timepicker" id="time_out" name="time_out" required>
+                                <input type="time" class="form-control timepicker" id="" name="debuMedi" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="finMedi" class="control-label">Fin Medi</label>
+
+                        
+                            <div class="bootstrap-timepicker">
+                                <input type="time" class="form-control timepicker" id="" name="finMedi" required>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="" class="control-label">Nombre des joures de Conge</label>
+
+                        
+                            <div class="">
+                                <input type="number" class="form-control" id="" name="nbConge" required>
                             </div>
                         
                     </div>

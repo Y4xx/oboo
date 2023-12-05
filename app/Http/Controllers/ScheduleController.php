@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use de;
 use App\Models\Schedule;
+use App\Models\Systeme_de_travail;
 use App\Http\Requests\ScheduleEmp;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
@@ -11,7 +14,8 @@ class ScheduleController extends Controller
     public function index()
     {
      
-        return view('admin.schedule')->with('schedules', Schedule::all());
+        // return view('admin.schedule')->with('schedules', Schedule::all());
+        return view('admin.schedule')->with('schedules', Systeme_de_travail::all());
         flash()->success('Success','Schedule has been created successfully !');
 
     }
@@ -21,13 +25,16 @@ class ScheduleController extends Controller
     {
         $request->validated();
 
-        $schedule = new schedule;
-        $schedule->slug = $request->slug;
-        $schedule->time_in = $request->time_in;
-        $schedule->time_out = $request->time_out;
+        // dd('test');
+        $schedule = new Systeme_de_travail;
+        $schedule->idAdmin = Auth::user()->id;
+        $schedule->name = $request->name;
+        $schedule->debuMatain = $request->debuMatain;
+        $schedule->finMatain = $request->finMatain;
+        $schedule->debuMedi = $request->debuMedi;
+        $schedule->finMedi = $request->finMedi;
+        $schedule->nbConge = $request->nbConge;
         $schedule->save();
-
-
 
 
         flash()->success('Success','Schedule has been created successfully !');
@@ -35,16 +42,20 @@ class ScheduleController extends Controller
 
     }
 
-    public function update(ScheduleEmp $request, Schedule $schedule)
+    public function update(ScheduleEmp $request, String $id)
     {
-        $request['time_in'] = str_split($request->time_in, 5)[0];
-        $request['time_out'] = str_split($request->time_out, 5)[0];
-
+        $request['debuMatain'] = str_split($request->debuMatain, 5)[0];
+        $request['finMatain'] = str_split($request->finMatain, 5)[0];
+        
         $request->validated();
+        $schedule = Systeme_de_travail::findOrFail($id);
+        // dd($schedule);
 
-        $schedule->slug = $request->slug;
-        $schedule->time_in = $request->time_in;
-        $schedule->time_out = $request->time_out;
+        $schedule->name = $request->name;
+        $schedule->debuMatain = $request->debuMatain;
+        $schedule->finMatain = $request->finMatain;
+        $schedule->debuMedi = $request->debuMedi;
+        $schedule->finMedi = $request->finMedi;
         $schedule->save();
         flash()->success('Success','Schedule has been Updated successfully !');
         return redirect()->route('schedule.index');
@@ -53,10 +64,22 @@ class ScheduleController extends Controller
     }
 
   
-    public function destroy(Schedule $schedule)
+    public function destroy(String $id)
     {
-        $schedule->delete();
-        flash()->success('Success','Schedule has been deleted successfully !');
-        return redirect()->route('schedule.index');
+        // $schedule->delete();
+        // flash()->success('Success','Schedule has been deleted successfully !');
+        // return redirect()->route('schedule.index');
+
+
+        $schedule = Systeme_de_travail::findOrFail($id);
+        // dd($schedule);
+        if ($schedule) {
+            $schedule->delete();
+            flash()->success('Success','Schedule has been deleted successfully !');
+            return redirect()->route('schedule.index');
+        } 
+        else {
+            flash()->success('Error','Schedule has been not deleted !!');
+            return redirect()->route('schedule.index');        }
     }
 }

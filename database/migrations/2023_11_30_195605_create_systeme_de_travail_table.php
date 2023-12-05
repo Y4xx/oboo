@@ -16,11 +16,12 @@ class CreateSystemeDeTravailTable extends Migration
         Schema::create('systeme_de_travail', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idAdmin')->references('id')->on('admin');
-            $table->date('debuMatain');
-            $table->date('finMatain');
-            $table->date('debuMedi');
-            $table->date('finMedi');
-            $table->integer('nbConge');
+            $table->string('name')->unique();
+            $table->time('debuMatain');
+            $table->time('finMatain');
+            $table->time('debuMedi');
+            $table->time('finMedi');
+            $table->integer('nbConge'); 
             $table->timestamps();
             // define the foreign key
             // $table->foreignId('id')->references('id')->on('employé');

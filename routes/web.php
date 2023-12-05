@@ -26,6 +26,7 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::get('/admin', '\App\Http\Controllers\AdminController@index')->name('admin');
 
     Route::resource('/schedule', '\App\Http\Controllers\ScheduleController');
+    
 
     Route::get('/check', '\App\Http\Controllers\CheckController@index')->name('check');
     Route::get('/sheet-report', '\App\Http\Controllers\CheckController@sheetReport')->name('sheet-report');

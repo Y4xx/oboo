@@ -5,7 +5,7 @@
 <div class="topbar-left">
     <a href="/" class="logo">
         <span>
-                <h1 style="color: white; ">ATAMZ</h1>
+                <h1 style="color: white; ">OBOO</h1>
             </span>
         <i>
             <h1>A</h1>

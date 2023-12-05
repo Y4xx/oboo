@@ -23,10 +23,18 @@ class ScheduleEmp extends FormRequest
      */
     public function rules()
     {
+        // return [
+        //     'slug' => 'required|string|min:3|max:32|alpha_dash',
+        //     'time_in' => 'required|date_format:H:i|before:time_out',
+        //     'time_out' => 'required|date_format:H:i',
+        // ];
         return [
-            'slug' => 'required|string|min:3|max:32|alpha_dash',
-            'time_in' => 'required|date_format:H:i|before:time_out',
-            'time_out' => 'required|date_format:H:i',
+            'name' => 'required|string|alpha_dash',
+            'debuMatain' => 'required|date_format:H:i',
+            'finMatain' => 'required|date_format:H:i',
+            'debuMedi' => 'required|date_format:H:i',
+            'finMedi' => 'required|date_format:H:i',
+            'nbConge' => 'required',
         ];
     }
 }

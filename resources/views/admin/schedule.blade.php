@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <div class="col-sm-6">
-        <h4 class="page-title text-left">Schedules</h4>
+        <h4 class="page-title text-left">Systeme 1de travail</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
             <li class="breadcrumb-item"><a href="javascript:void(0);">Schedule</a></li>
@@ -31,11 +31,13 @@
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li>{{ $error }}</li>1
             @endforeach
         </ul>
     </div>
 @endif
+
+{{-- {{Auth::user()->id}} --}}
 <!--End showing Validation Errors here-->
 
     <div class="row">
@@ -50,10 +52,13 @@
                                 <thead>
                                     <tr>
                                         <th data-priority="1">ID</th>
-                                        <th data-priority="2">Shift</th>
-                                        <th data-priority="3">Time In</th>
-                                        <th data-priority="4">Time Out</th>
-                                        <th data-priority="5">Action</th>
+                                        <th data-priority="2">Nom</th>
+                                        <th data-priority="3">Debu Matain</th>
+                                        <th data-priority="4">Fin Matain</th>
+                                        <th data-priority="5">Debut Medi</th>
+                                        <th data-priority="6">Fin Medi</th>
+                                        <th data-priority="7">Nombre Conge</th>
+                                        <th data-priority="8">Action</th>
                                      
 
                                     </tr>
@@ -62,15 +67,18 @@
                                     @foreach ($schedules as $schedule)
                                         <tr>
                                             <td> {{ $schedule->id }} </td>
-                                            <td> {{ $schedule->slug }} </td>
-                                            <td> {{ $schedule->time_in }} </td>
-                                            <td> {{ $schedule->time_out }} </td>
+                                            <td> {{ $schedule->name }} </td>
+                                            <td> {{ $schedule->debuMatain }} </td>
+                                            <td> {{ $schedule->finMatain }} </td>
+                                            <td> {{ $schedule->debuMedi }} </td>
+                                            <td> {{ $schedule->finMedi }} </td>
+                                            <td> {{ $schedule->nbConge }} </td>
                                             <td>
 
-                                                <a href="#edit{{ $schedule->slug }}" data-toggle="modal"
+                                                <a href="#edit{{ $schedule->name }}" data-toggle="modal"
                                                     class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i>
                                                     Edit</a>
-                                                <a href="#delete{{ $schedule->slug }}" data-toggle="modal"
+                                                <a href="#delete{{ $schedule->name }}" data-toggle="modal"
                                                     class="btn btn-danger btn-sm delete btn-flat"><i
                                                         class='fa fa-trash'></i> Delete</a>
 
