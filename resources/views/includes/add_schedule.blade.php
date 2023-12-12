@@ -33,8 +33,6 @@
                         </div>
                         <div class="col-sm-6">
                             <label for="finMatain" class="control-label">Fin Matain</label>
-
-                        
                             <div class="bootstrap-timepicker">
                                 <input type="time" class="form-control timepicker" id="" name="finMatain" required>
                             </div>

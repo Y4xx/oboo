@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeEmployesTable extends Migration
+class TypeEmployes extends Migration
 {
     /**
      * Run the migrations.
@@ -15,11 +15,8 @@ class CreateTypeEmployesTable extends Migration
     {
         Schema::create('type_employes', function (Blueprint $table) {
             $table->id();
-            $table->string('nomtype');
-            $table->integer('duredetravailleparjour');
-            $table->integer('Porcentage-de-chaque-absence');
-            // define the foreign key;
-            // $table->foreignId('id')->references('id')->on('employé');
+            $table->string('type_nom');
+            $table->String('Heure_de_travaille_par_jour');
             $table->timestamps();
         });
     }

@@ -32,6 +32,9 @@
                                     <li>
                                         <a href="/schedule" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="ti-time"></i><span>System de Travail</span></a>
                                     </li>
+                                    <li>
+                                        <a href="/type_employes" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="ti-user"></i><span>Type des employés</span></a>
+                                    </li>
                                    
                                 </ul>
                             </li>
