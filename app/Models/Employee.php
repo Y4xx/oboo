@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Type_Employes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +18,13 @@ class Employee extends Model
     protected $table = 'employes';
     protected $fillable = ['fullname', 'email', 'password','numTel','nbjourconge','salaire','idtype_employer'];
 
-  
+    public function Type()
+    {
+        return $this->belongsTo(Type_Employes::class);
+    }
+
+
+
     // protected $hidden = [
     //     'pin_code', 'remember_token',
     // ];

@@ -21,7 +21,7 @@ class CreateEmployesTable extends Migration
             $table->integer('numTel');
             $table->integer('nbjourconge');
             $table->integer('salaire');
-            $table->integer('idtype_employer');
+            $table->foreignId('idtype_employer')->references('id')->on('type_employes')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

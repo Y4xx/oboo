@@ -16,7 +16,7 @@ class PointageController extends Controller
     public function Pointer(Request $request){
         // dd(Carbon::now()->format('Y-m-d'));
         $todayDate = Carbon::now()->format('Y-m-d');
-        $now = Carbon::parse("17:20:00");
+        $now = Carbon::parse("13:20:00");
         $todayTime = Carbon::now()->format('H:i:s');
 
 
