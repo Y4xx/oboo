@@ -44,12 +44,14 @@
                                                     <thead>
                                                     <tr>
                                                         <th data-priority="1">Employee ID</th>
-                                                        <th data-priority="2">Name</th>
-                                                        <th data-priority="3">position</th>
-                                                        <th data-priority="4">Email</th>
-                                                        <th data-priority="5">Schedule</th>
-                                                        <th data-priority="6">Member Since</th>
+                                                        <th data-priority="2">Nom compler</th>
+                                                        <th data-priority="3">Numero de Telephone</th>
+                                                        <th data-priority="4">Salaire</th>
+                                                        <th data-priority="5">Nembre de jour de Conge</th>
+                                                        <th data-priority="6">Email</th>
+                                                        <th data-priority="8">Password</th>
                                                         <th data-priority="7">Actions</th>
+                                                        <th data-priority="9">Created at</th>
                                                      
                                                     </tr>
                                                     </thead>
@@ -58,20 +60,18 @@
 
                                                         <tr>
                                                             <td>{{$employee->id}}</td>
-                                                            <td>{{$employee->name}}</td>
-                                                            <td>{{$employee->position}}</td>
+                                                            <td>{{$employee->fullname}}</td>
+                                                            <td>{{$employee->numTel}}</td>
+                                                            <td>{{$employee->salaire}}</td>
+                                                            <td>{{$employee->nbjourconge}}</td>
                                                             <td>{{$employee->email}}</td>
-                                                            <td>
-                                                                @if(isset($employee->schedules->first()->slug))
-                                                                {{$employee->schedules->first()->slug}}
-                                                                @endif
-                                                            </td>
-                                                            <td>{{$employee->created_at}}</td>
+                                                            <td>{{$employee->password}}</td>
                                                             <td>
                         
-                                                                <a href="#edit{{$employee->name}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i> Edit</a>
-                                                                <a href="#delete{{$employee->name}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i> Delete</a>
+                                                                <a href="#edit{{$employee->id}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i> Edit</a>
+                                                                <a href="#delete{{$employee->id}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i> Delete</a>
                                                             </td>
+                                                            <td>{{$employee->created_at}}</td>
                                                         </tr>
                                                         @endforeach
                                                    

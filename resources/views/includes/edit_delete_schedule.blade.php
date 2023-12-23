@@ -1,5 +1,5 @@
 <!-- Edit -->
-<div class="modal fade" id="edit{{ $schedule->name }}">
+<div class="modal fade" id="edit{{ $schedule->id }}">
     <div class=" modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -60,7 +60,8 @@
 
 
                     <div class="form-group">
-                        <label for="edit_time_out" class="col-sm-3 control-label">Time out</label>
+                        <label for="edit_time_out" class="control-label">Nombre des joures de Conge
+                        </label>
                         <div class="bootstrap-timepicker">
                             <input type="number" class="form-control timevvvpicker" name="nbConge"
                                 value="{{ $schedule->nbConge }}">
@@ -86,7 +87,7 @@
 
 
 <!-- Delete -->
-<div class="modal fade" id="delete{{ $schedule->name }}">
+<div class="modal fade" id="delete{{ $schedule->id }}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header " style="align-items: center">

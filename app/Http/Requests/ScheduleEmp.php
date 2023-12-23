@@ -29,7 +29,7 @@ class ScheduleEmp extends FormRequest
         //     'time_out' => 'required|date_format:H:i',
         // ];
         return [
-            'name' => 'required|string|alpha_dash',
+            'name' => 'required|string',
             'debuMatain' => 'required|date_format:H:i',
             'finMatain' => 'required|date_format:H:i',
             'debuMedi' => 'required|date_format:H:i',

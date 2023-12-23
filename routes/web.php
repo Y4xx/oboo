@@ -4,6 +4,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PointageController;
 use App\Http\Controllers\FingerDevicesControlller;
 
 Route::get('/', function () {
@@ -25,8 +26,8 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
     Route::get('/admin', '\App\Http\Controllers\AdminController@index')->name('admin');
 
-    Route::resource('/schedule', '\App\Http\Controllers\ScheduleController');
     Route::resource('/type_employes','\App\Http\Controllers\Type_EmployesController');
+    Route::resource('/schedule', '\App\Http\Controllers\ScheduleController');
     
 
     Route::get('/check', '\App\Http\Controllers\CheckController@index')->name('check');
@@ -34,11 +35,13 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::post('check-store','\App\Http\Controllers\CheckController@CheckStore')->name('check_store');
 
 });
-// Route::middleware(['auth','isEmployer'])->group(function () {
-  // });
-  
+Route::middleware(['auth','isEmp'])->group(function () {
   Route::get('/employer', [EmployeeController::class, 'EmployeeIU'])->name('EmployeeIU.index');
-
+  Route::any('/Pointer', [PointageController::class, 'Pointer'])->name('pointer');
+  
+});
+  
+  
  Route::get('/leave/assign', function () {
    return view('attendance_leave_login');
  })->name('leave.login');

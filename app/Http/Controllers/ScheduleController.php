@@ -25,7 +25,6 @@ class ScheduleController extends Controller
     {
         $request->validated();
 
-        // dd('test');
         $schedule = new Systeme_de_travail;
         $schedule->idAdmin = Auth::user()->id;
         $schedule->name = $request->name;
@@ -35,6 +34,7 @@ class ScheduleController extends Controller
         $schedule->finMedi = $request->finMedi;
         $schedule->nbConge = $request->nbConge;
         $schedule->save();
+        // dd('test');
 
 
         flash()->success('Success','Schedule has been created successfully !');
@@ -44,8 +44,8 @@ class ScheduleController extends Controller
 
     public function update(ScheduleEmp $request, String $id)
     {
-        $request['debuMatain'] = str_split($request->debuMatain, 5)[0];
-        $request['finMatain'] = str_split($request->finMatain, 5)[0];
+        // $request['debuMatain'] = str_split($request->debuMatain, 5)[0];
+        // $request['finMatain'] = str_split($request->finMatain, 5)[0];
         
         $request->validated();
         $schedule = Systeme_de_travail::findOrFail($id);
@@ -80,6 +80,7 @@ class ScheduleController extends Controller
         } 
         else {
             flash()->success('Error','Schedule has been not deleted !!');
-            return redirect()->route('schedule.index');        }
+            return redirect()->route('schedule.index');        
+        }
     }
 }

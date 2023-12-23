@@ -14,42 +14,40 @@ class Employee extends Model
     {
         return 'name';
     }
-    protected $table = 'employees';
-    protected $fillable = [
-        'name', 'email', 'pin_code'
-    ];
+    protected $table = 'employes';
+    protected $fillable = ['fullname', 'email', 'password','numTel','nbjourconge','salaire','idtype_employer'];
 
   
-    protected $hidden = [
-        'pin_code', 'remember_token',
-    ];
+    // protected $hidden = [
+    //     'pin_code', 'remember_token',
+    // ];
 
 
-    public function check()
-    {
-        return $this->hasMany(Check::class);
-    }
+    // public function check()
+    // {
+    //     return $this->hasMany(Check::class);
+    // }
 
-    public function attendance()
-    {
-        return $this->hasMany(Attendance::class);
-    }
-    public function latetime()
-    {
-        return $this->hasMany(Latetime::class);
-    }
-    public function leave()
-    {
-        return $this->hasMany(Leave::class);
-    }
-    public function overtime()
-    {
-        return $this->hasMany(Overtime::class);
-    }
-    public function schedules()
-    {
-        return $this->belongsToMany('App\Models\Schedule', 'schedule_employees', 'emp_id', 'schedule_id');
-    }
+    // public function attendance()
+    // {
+    //     return $this->hasMany(Attendance::class);
+    // }
+    // public function latetime()
+    // {
+    //     return $this->hasMany(Latetime::class);
+    // }
+    // public function leave()
+    // {
+    //     return $this->hasMany(Leave::class);
+    // }
+    // public function overtime()
+    // {
+    //     return $this->hasMany(Overtime::class);
+    // }
+    // public function schedules()
+    // {
+    //     return $this->belongsToMany('App\Models\Schedule', 'schedule_employees', 'emp_id', 'schedule_id');
+    // }
 
 
     

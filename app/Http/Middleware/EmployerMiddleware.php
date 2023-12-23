@@ -21,14 +21,14 @@ class EmployerMiddleware
     {
         if(Auth::check())
         {
-            if(Auth::user()->type === 'admin')
+            if(Auth::user()->type === 'employer')
             {
                 return $next($request);
                 // return redirect('/employer');
             }
             else
             {
-                return redirect('/employer')->with('status','Access Denied! as you are not as Admin');
+                return redirect('/admin')->with('status','Access Denied! as you are not as admin');  
             }
         }
         else

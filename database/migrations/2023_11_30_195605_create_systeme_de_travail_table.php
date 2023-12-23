@@ -15,7 +15,8 @@ class CreateSystemeDeTravailTable extends Migration
     {
         Schema::create('systeme_de_travail', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idAdmin')->references('id')->on('admin');
+            // $table->foreignId('idAdmin')->references('id')->on('admin');
+            $table->integer('idAdmin')->nullable();
             $table->string('name')->unique();
             $table->time('debuMatain');
             $table->time('finMatain');

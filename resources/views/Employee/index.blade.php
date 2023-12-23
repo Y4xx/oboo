@@ -9,13 +9,25 @@
     <title>OBOO</title>
 </head>
 <style>
+.btn-pointer{
+    height: 150px; 
+    width: 150px; 
+    margin: auto; 
+    margin-bottom: 1rem; 
+    display: flow;
+}
+.logout-form{
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+}
 .blur{
     filter: blur(7px);
     transition: filter 0.5s ease-in-out;
 }
-    .text-center {
-        transition: filter 0.2s ease-in-out;
-        }
+.text-center {
+    transition: filter 0.2s ease-in-out;
+}
 .profile-img{
     position: relative;
     display: block;
@@ -51,10 +63,18 @@
 <!-- Section: Design Block -->
 <section class="text-center">
     <!-- Background image -->
+          <div class="logout-form" >
+            <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i class="mdi mdi-power text-danger"></i> {{ __('Logout') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> 
+                @csrf
+            </form>
+          </div>
     <div class="p-5 bg-image" style="
           background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
           height: 200px;
           "></div>
+
     <!-- Background image -->
     <div class="card mx-4 mx-md-5 shadow-5-strong" style="
           margin-top: -100px;
@@ -66,11 +86,23 @@
         <img src="https://th.bing.com/th/id/OIP.CbyofhapadSWo3-GT9o4VwHaHa?rs=1&pid=ImgDetMain"
             alt="Profile image" class="img-fluid rounded-circle rounded-circle border border-4 border-white">
     </div>
-      <div class="card-body py-5 px-md-5">
-  
+      <div class="card-body py-2 px-md-5">
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
         <div class="row d-flex justify-content-center">
           <div class="col-lg-8">
-            <h2 class="fw-bold mb-5">Bonjour Yassine Oujama</h2>
+            <h2 class="fw-bold mb-5">Bonjour {{Auth::user()->name}}</h2>
+
+
 
                 <div class="row">
                     <div class="col-md-6 mb-4">
@@ -99,15 +131,19 @@
                             comunidad de programación de
                             todo el mundo?. Si tu
                             respuesta es Si, da click en el boton de aceptar para formar parte de nuestro grupo.</p>
-                    </div>
-                    <button class="btn btn-success btn-lg" style="height: 150px; width: 150px; margin: auto; margin-bottom: 1rem;">Pointer
-                            <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
-                                <style>svg{fill:#ffffff}</style>
-                                <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
-                    </button>
+                        </div>
+                        <form method="post" action="{{ route("pointer")}}">
+                            @csrf
+                            <input type="hidden" name="idemploye" value="{{Auth::user()->id}}">
+                            <button type="submit" class="btn btn-success btn-lg btn-pointer">Pointer
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
+                                        <style>svg{fill:#ffffff}</style>
+                                        <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
+                            </button>
+                        </form>
 
 
-                    <div class="modal-footer">
+                    <div class="modal-footer" >
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                         {{-- <a type="button" class="btn btn-primary" href="https://coderwall.com/" target="_blank">Aceptar</a> --}}
                     </div>
@@ -140,14 +176,15 @@
                           </div>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        </div>
                 </div>
             </div>
         </div>
 
 
+        @include('includes.flash')
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -176,11 +213,8 @@ $(document).ready(function(){
     console.log('Modal is hidden');
     $('.text-center').removeClass('blur');
   });
-
-
 });
 </script>
-
     </html>
 </body>
 

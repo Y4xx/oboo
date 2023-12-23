@@ -30,7 +30,7 @@
                                         </div>
                                         <div class="pt-2">
                                             <div class="float-right">
-                                                <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
+                                                <a href="/employees" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
                                             </div>
                                             <p class="text-white-50 mb-0">More info</p>
                                         </div>

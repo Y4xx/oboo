@@ -5,8 +5,10 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-class adminMiddleware
+
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -26,7 +28,7 @@ class adminMiddleware
             }
             else
             {
-                return redirect('/employer')->with('status','Access Denied! as you are not as Admin');
+                return redirect('/employer')->with('status','Access Denied! as you are not as Employer');
             }
         }
         else

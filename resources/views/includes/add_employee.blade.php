@@ -15,38 +15,42 @@
 
                     <form method="POST" action="{{ route('employees.store') }}">
                         @csrf
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Employee Name" id="name" name="name"
-                                required />
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Nom Complet</label>
+                                <input type="text" class="form-control" placeholder="Enter Employee Name" id="name" name="fullname"required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name">Numero de telephone</label>
+                                <input type="number" class="form-control" placeholder="Enter Numero de telephone" id="numTel" name="numTel"required />
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="position">Position</label>
-                            <input type="text" class="form-control" placeholder="Enter Employee Name" id="position" name="position"
-                                required />
-                        </div>
-
                         
                         <div class="form-group">
-                            <label for="email" class="col-sm-3 control-label">Email</label>
-
-
-                            <input type="email" class="form-control" id="email" name="email">
-
+                            <label for="position">Email</label>
+                            <input type="email" class="form-control" placeholder="Enter Employee Name" id="email" name="email"required />
                         </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="salaire">Salaire</label>
+                                <input type="number" class="form-control" placeholder="Enter Employee Name" id="salaire" name="salaire"required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name">Nomre des jours Conge</label>
+                                <input type="number" class="form-control" placeholder="Enter nomre des jours Conge" id="nbjourconge" name="nbjourconge"required />
+                            </div>
+                        </div>
+                        <input type="hidden" value="test 123" class="form-control" placeholder="Enter nomre des jours Conge" id="password" name="password" required />
+                    
                         <div class="form-group">
-                            <label for="schedule" class="col-sm-3 control-label">Schedule</label>
-
-
-                            <select class="form-control" id="schedule" name="schedule" required>
+                            <label for="schedule" class="control-label">Type Employer</label>
+                            <select class="form-control" id="idtype_employer" name="idtype_employer" required>
                                 <option value="" selected>- Select -</option>
                                 @foreach($schedules as $schedule)
-                                <option value="{{$schedule->slug}}">{{$schedule->slug}} -> from {{$schedule->time_in}}
-                                    to {{$schedule->time_out}} </option>
+                                <option value="{{$schedule->id}}">{{$schedule->type_nom}}</option>
                                 @endforeach
-
                             </select>
-
                         </div>
 
                         <div class="form-group">

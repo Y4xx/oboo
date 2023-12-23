@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Employee;
-use App\Models\Role;
 use App\Models\Schedule;
+use App\Models\Type_Employes;
 use App\Http\Requests\EmployeeRec;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class EmployeeController extends Controller
@@ -14,21 +16,35 @@ class EmployeeController extends Controller
    
     public function index()
     {
-       
-        return view('admin.employee')->with(['employees'=> Employee::all(), 'schedules'=>Schedule::all()]);
+       $types = Type_Employes::all();
+    //    dd(Employee::all());
+        return view('admin.employee')->with(['employees'=> Employee::all(), 'schedules'=>Type_Employes::all()]);
     }
 
     public function store(EmployeeRec $request)
     {
         $request->validated();
+        // Employee::create($request->post());
 
         $employee = new Employee;
-        $employee->name = $request->name;
-        $employee->position = $request->position;
+        $employee->idtype_employer = $request->idtype_employer;
+        $employee->fullname = $request->fullname;
+        $employee->numTel = $request->numTel;
         $employee->email = $request->email;
-        $employee->pin_code = bcrypt($request->pin_code);
+        $employee->salaire = $request->salaire;
+        $employee->nbjourconge = $request->nbjourconge;
+        $employee->password = str_replace(' ', '', $request->fullname);
         $employee->save();
 
+
+        $user = new User;
+        $user->name = $request->fullname;
+        $user->email = $request->email;
+        $user->type = 'employer';
+        $user->password = Hash::make(str_replace(' ', '', $request->fullname));
+        $user->save();
+
+        
         if($request->schedule){
 
             $schedule = Schedule::whereSlug($request->schedule)->first();
@@ -46,18 +62,21 @@ class EmployeeController extends Controller
     }
 
  
-    public function update(EmployeeRec $request, Employee $employee)
+    public function update(EmployeeRec $request, String $id)
     {
         $request->validated();
 
-        $employee->name = $request->name;
-        $employee->position = $request->position;
-        $employee->email = $request->email;
-        $employee->pin_code = bcrypt($request->pin_code);
-        $employee->save();
+        $employer= Employee::findOrFail($id);
+        // dd($request->fullname);
+        $employer->fullname = $request->fullname;
+        $employer->email = $request->email;
+        $employer->numTel = $request->numTel;
+        $employer->nbjourconge = $request->nbjourconge;
+        $employer->salaire = $request->salaire;
+        $employer->idtype_employer = $request->idtype_employer;
+        $employer->save();
 
         if ($request->schedule) {
-
             $employee->schedules()->detach();
 
             $schedule = Schedule::whereSlug($request->schedule)->first();
@@ -71,11 +90,24 @@ class EmployeeController extends Controller
     }
 
 
-    public function destroy(Employee $employee)
+    public function destroy(String $id)
     {
-        $employee->delete();
-        flash()->success('Success','Employee Record has been Deleted successfully !');
-        return redirect()->route('employees.index')->with('success');
+        // $employee->delete();
+        // flash()->success('Success','Employee Record has been Deleted successfully !');
+        // return redirect()->route('employees.index')->with('success');
+
+
+        $employer = Employee::findOrFail($id);
+        // dd($employer);
+        if ($employer) {
+            $employer->delete();
+            flash()->success('Success','Employer has been deleted successfully !');
+            return redirect()->route('employees.index');
+        } 
+        else {
+            flash()->success('Error','Employer has been not deleted !!');
+            return redirect()->route('employees.index');
+        }
     }
 
     public function EmployeeIU(){
