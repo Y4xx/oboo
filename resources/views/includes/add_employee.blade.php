@@ -13,7 +13,7 @@
 
                 <div class="card-body text-left">
 
-                    <form method="POST" action="{{ route('employees.store') }}">
+                    <form method="POST" action="{{ route('employees.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="form-group col-md-6">
@@ -22,14 +22,25 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="name">Numero de telephone</label>
-                                <input type="number" class="form-control" placeholder="Enter Numero de telephone" id="numTel" name="numTel"required />
+                                <input type="number" class="form-control" placeholder="Enter Numero de telephone" id="numTel" name="numTel"  required />
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 ">
+                                <label for="position">Email</label>
+                                <input type="email" class="form-control" placeholder="Enter Employee Name" id="email" name="email"required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="photo_profile">photo_profile</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="photo_profile"  name="photo_profile">
+                                    <label class="custom-file-label" for="customFileLang">Select photo</label>
+                                </div>
+                            </div>
+                         </div>
+                       
                         
-                        <div class="form-group">
-                            <label for="position">Email</label>
-                            <input type="email" class="form-control" placeholder="Enter Employee Name" id="email" name="email"required />
-                        </div>
+                    
                         
                         <div class="row">
                             <div class="form-group col-md-6">
@@ -42,7 +53,8 @@
                             </div>
                         </div>
                         <input type="hidden" value="test 123" class="form-control" placeholder="Enter nomre des jours Conge" id="password" name="password" required />
-                    
+                
+                        
                         <div class="form-group">
                             <label for="schedule" class="control-label">Type Employer</label>
                             <select class="form-control" id="idtype_employer" name="idtype_employer" required>
@@ -52,7 +64,6 @@
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="form-group">
                             <div>
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">

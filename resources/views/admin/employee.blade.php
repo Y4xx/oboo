@@ -8,8 +8,8 @@
     <h4 class="page-title text-left">Employees</h4>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+      
         <li class="breadcrumb-item"><a href="javascript:void(0);">Employees</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0);">Employees List</a></li>
   
     </ol>
 </div>
@@ -47,32 +47,32 @@
                                                         <th data-priority="2">Nom compler</th>
                                                         <th data-priority="3">Numero de Telephone</th>
                                                         <th data-priority="4">Salaire</th>
+                                                        <th data-priority="7">Type d'employee</th>
                                                         <th data-priority="5">Nembre de jour de Conge</th>
                                                         <th data-priority="6">Email</th>
                                                         <th data-priority="8">Password</th>
-                                                        <th data-priority="7">Actions</th>
-                                                        <th data-priority="9">Created at</th>
+                                                        <th data-priority="9">Actions</th>
                                                      
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach( $employees as $employee)
+                                                            <tr>
+                                                                <td>{{$employee->id}}</td>
+                                                                <td>{{$employee->fullname}}</td>
+                                                                <td>{{$employee->numTel}}</td>
+                                                                <td>{{$employee->salaire}}</td>
+                                                                <td>{{$employee->Type->type_nom}}</td>
+                                                                <td>{{$employee->nbjourconge}}</td>
+                                                                <td>{{$employee->email}}</td>
+                                                                <td>{{$employee->password}}</td>
+                                                               
+                                                                <td>
+                                                                    <a href="#edit{{$employee->id}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i> Edit</a>
+                                                                    <a href="#delete{{$employee->id}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i> Delete</a>
+                                                                </td>
 
-                                                        <tr>
-                                                            <td>{{$employee->id}}</td>
-                                                            <td>{{$employee->fullname}}</td>
-                                                            <td>{{$employee->numTel}}</td>
-                                                            <td>{{$employee->salaire}}</td>
-                                                            <td>{{$employee->nbjourconge}}</td>
-                                                            <td>{{$employee->email}}</td>
-                                                            <td>{{$employee->password}}</td>
-                                                            <td>
-                        
-                                                                <a href="#edit{{$employee->id}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i> Edit</a>
-                                                                <a href="#delete{{$employee->id}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i> Delete</a>
-                                                            </td>
-                                                            <td>{{$employee->created_at}}</td>
-                                                        </tr>
+                                                            </tr>
                                                         @endforeach
                                                    
                                                     </tbody>

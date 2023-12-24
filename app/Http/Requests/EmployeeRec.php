@@ -24,9 +24,25 @@ class EmployeeRec extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|string|min:3|max:64|alpha_dash',
-            // 'position' => 'required|string|min:3|max:64|alpha_dash',
-            // 'schedule' => 'required|exists:schedules,slug',
+            'numTel' => 'required|numeric|digits:10',
+            'fullname' => 'required',
+            'idtype_employer' => 'required',
+            'email' => 'required|email',
+            'salaire' => 'required|numeric',
+            'nbjourconge' => 'required|numeric',
+            'photo_profile'=> 'image|mimes:png,jpg,jpeg|max:8000'
+            
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'numTel.required' => 'Vous devez fournir le numéro de téléphone',
+            'numTel.digits' => 'le numéro de téléphone doit étre 10 numéro',
+            'fullname.required' => 'Vous devez fournir le nom compléte ',
+            'salaire.required' => 'Vous devez fournir le salaire ',
+            'salaire.numeric' => 'le salaire doit étre number',
+            'nbjourconge.required' => 'Vous devez fournir le nombre de congé',
         ];
     }
 }

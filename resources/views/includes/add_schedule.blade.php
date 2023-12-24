@@ -47,7 +47,7 @@
 
                         
                             <div class="bootstrap-timepicker">
-                                <input type="time" class="form-control timepicker" id="" name="debuMedi" required>
+                                <input type="time" class="form-control timepicker" id="" name="debutMedi" required>
                             </div>
                         </div>
                         <div class="col-sm-6">

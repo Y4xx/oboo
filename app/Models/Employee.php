@@ -20,7 +20,7 @@ class Employee extends Model
 
     public function Type()
     {
-        return $this->belongsTo(Type_Employes::class);
+        return $this->belongsTo(Type_Employes::class,'idtype_employer','id');
     }
 
 
@@ -28,7 +28,6 @@ class Employee extends Model
     // protected $hidden = [
     //     'pin_code', 'remember_token',
     // ];
-
 
     // public function check()
     // {
@@ -55,8 +54,5 @@ class Employee extends Model
     // {
     //     return $this->belongsToMany('App\Models\Schedule', 'schedule_employees', 'emp_id', 'schedule_id');
     // }
-
-
-    
 
 }

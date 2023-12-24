@@ -30,11 +30,11 @@ class ScheduleEmp extends FormRequest
         // ];
         return [
             'name' => 'required|string',
-            'debuMatain' => 'required|date_format:H:i',
-            'finMatain' => 'required|date_format:H:i',
-            'debuMedi' => 'required|date_format:H:i',
-            'finMedi' => 'required|date_format:H:i',
-            'nbConge' => 'required',
+            'debuMatain' => 'required|before:finMatain',
+            'finMatain' => 'required|before:debutMedi|after:debuMatain',
+            'debutMedi' => 'required|before:finMedi|after:finMatain',
+            'finMedi' => 'required|after:debuMedi',
+            'nbConge' => 'required|numeric',
         ];
     }
 }

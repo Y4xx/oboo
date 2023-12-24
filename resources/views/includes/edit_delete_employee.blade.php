@@ -46,7 +46,7 @@
                             <option value="" >- Select -</option>
                             {{-- <option value="" selected>{{$employee->idtype_employer->type_nom}}</option> --}}
                             @foreach($schedules as $schedule)   
-                            <option value="{{$schedule->id}}">{{$schedule->type_nom}}</option>
+                             <option value="{{$schedule->id}}"  {{$schedule->id==$employee->idtype_employer?"selected":""}}>{{$schedule->type_nom}}</option>
                             @endforeach
                         </select>
                     </div>

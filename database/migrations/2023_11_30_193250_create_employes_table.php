@@ -18,7 +18,8 @@ class CreateEmployesTable extends Migration
             $table->string('fullname');
             $table->string('email');
             $table->string('password');
-            $table->integer('numTel');
+            $table->string('numTel');
+            $table->string('photo_profile');
             $table->integer('nbjourconge');
             $table->integer('salaire');
             $table->foreignId('idtype_employer')->references('id')->on('type_employes')->onDelete('cascade');

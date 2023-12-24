@@ -24,22 +24,17 @@ class ScheduleController extends Controller
     public function store(ScheduleEmp $request)
     {
         $request->validated();
-
         $schedule = new Systeme_de_travail;
         $schedule->idAdmin = Auth::user()->id;
         $schedule->name = $request->name;
         $schedule->debuMatain = $request->debuMatain;
         $schedule->finMatain = $request->finMatain;
-        $schedule->debuMedi = $request->debuMedi;
+        $schedule->debuMedi = $request->debutMedi;
         $schedule->finMedi = $request->finMedi;
         $schedule->nbConge = $request->nbConge;
         $schedule->save();
-        // dd('test');
-
-
         flash()->success('Success','Schedule has been created successfully !');
         return redirect()->route('schedule.index');
-
     }
 
     public function update(ScheduleEmp $request, String $id)
@@ -54,8 +49,9 @@ class ScheduleController extends Controller
         $schedule->name = $request->name;
         $schedule->debuMatain = $request->debuMatain;
         $schedule->finMatain = $request->finMatain;
-        $schedule->debuMedi = $request->debuMedi;
+        $schedule->debuMedi = $request->debutMedi;
         $schedule->finMedi = $request->finMedi;
+        $schedule->nbConge = $request->nbConge;
         $schedule->save();
         flash()->success('Success','Schedule has been Updated successfully !');
         return redirect()->route('schedule.index');

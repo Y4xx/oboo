@@ -85,6 +85,7 @@
     <div class="profile-img">
         <img src="https://th.bing.com/th/id/OIP.CbyofhapadSWo3-GT9o4VwHaHa?rs=1&pid=ImgDetMain"
             alt="Profile image" class="img-fluid rounded-circle rounded-circle border border-4 border-white">
+            
     </div>
       <div class="card-body py-2 px-md-5">
         @if (session('success'))

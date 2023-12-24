@@ -25,7 +25,11 @@ class EmployeeController extends Controller
     {
         $request->validated();
         // Employee::create($request->post());
-
+        $nomPhoto=null;
+        if(isset($request->photo_profile)){
+            $nomPhoto = time().'.'.$request->photo_profile->extension();
+            $request->photo_profile->storeAs('images_profile', $nomPhoto);
+        }else{$nomPhoto="profile.png";}
         $employee = new Employee;
         $employee->idtype_employer = $request->idtype_employer;
         $employee->fullname = $request->fullname;
@@ -34,6 +38,7 @@ class EmployeeController extends Controller
         $employee->salaire = $request->salaire;
         $employee->nbjourconge = $request->nbjourconge;
         $employee->password = str_replace(' ', '', $request->fullname);
+        $employee->photo_profile =$nomPhoto;
         $employee->save();
 
 

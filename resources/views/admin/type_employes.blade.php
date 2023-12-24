@@ -50,8 +50,8 @@
                                                             <td>{{$type->type_nom}}</td>
                                                             <td>{{$type->Heure_de_travaille_par_jour}}h</td>
                                                             <td>
-                                                                <a href="#edit{{$type->name}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i> Edit</a>
-                                                                <a href="#delete{{$type->name}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i> Delete</a>
+                                                                <a href="#edit{{$type->id}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i> Edit</a>
+                                                                <a href="#delete{{$type->id}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i> Delete</a>
                                                             </td>
                                                         </tr>
                                                         @endforeach
@@ -66,8 +66,9 @@
                         </div> <!-- end row -->   
                         
 @include('includes.add_type_employes')
+
 @foreach( $types as $type)
-@include('includes.edit_delete_type_employes')
+    @include('includes.edit_delete_type_employes')
 @endforeach
 @endsection
 

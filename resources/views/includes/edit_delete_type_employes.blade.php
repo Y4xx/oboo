@@ -1,5 +1,5 @@
 <!-- Edit -->
-<div class="modal fade" id="edit{{ $type->name }}">
+<div class="modal fade" id="edit{{ $type->id }}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -35,12 +35,12 @@
 </div>
 
 <!-- Delete -->
-<div class="modal fade" id="delete{{ $type->name }}">
+<div class="modal fade" id="delete{{ $type->id }}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header " style="align-items: center">
                
-              <h4 class="modal-title "><span class="employee_id">Delete Employee</span></h4>
+              <h4 class="modal-title "><span class="employee_id">Delete Type Employee</span></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">

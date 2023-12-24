@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\Type_Employes;
+use App\Http\Requests\Type_employe;
 use TypeEmployes;
 
 class Type_EmployesController extends Controller
@@ -35,10 +36,9 @@ class Type_EmployesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Type_employe $request)
     {
-        $this->validate($request,
-        ["type_employ"=>"required","heure_travaille"=>"required|numeric"]);
+        $request->validated();
         $type=new Type_Employes();
         $type->type_nom=$request->type_employ;
         $type->Heure_de_travaille_par_jour=$request->heure_travaille;
@@ -77,8 +77,9 @@ class Type_EmployesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Type_employe $request, $id)
     {
+        $request->validated();
         $type=Type_Employes::find($id);
         $type->type_nom=$request->type_employ; 
         $type->Heure_de_travaille_par_jour=$request->heure_travaille;

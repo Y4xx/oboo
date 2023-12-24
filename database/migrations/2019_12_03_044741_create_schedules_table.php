@@ -25,8 +25,6 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedule_employees', function (Blueprint $table) {
             $table->integer('emp_id')->unsigned();
             $table->integer('schedule_id')->unsigned();
-          
-
             $table->foreign('emp_id')->references('id')->on('employees')->onDelete('cascade');
             $table->foreign('schedule_id')->references('id')->on('schedules')->onDelete('cascade');
         });
