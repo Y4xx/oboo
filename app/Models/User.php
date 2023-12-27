@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models; 
+use App\Models\Employee;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -8,7 +9,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    protected $fillable = [
+        'name', 'email', 'password', 'pin_code','type', 'photo_profile', 'employerId' ,
+    ];
+    
 
     public function getRouteKeyName()
     {
@@ -18,6 +22,11 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany('App\Models\Role', 'role_users', 'user_id', 'role_id');
+    }
+
+    public function Employer()
+    {
+        return $this->belongsTo(Employee::class, 'employerId' , 'id');
     }
 
     public function hasAnyRole($roles)
@@ -46,9 +55,6 @@ class User extends Authenticatable
     }
 
 
-    protected $fillable = [
-        'name', 'email', 'password', 'pin_code','type',
-    ];
 
   
     protected $hidden = [
