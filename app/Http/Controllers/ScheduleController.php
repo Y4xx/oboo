@@ -45,17 +45,17 @@ class ScheduleController extends Controller
         $request->validated();
         $schedule = Systeme_de_travail::findOrFail($id);
         // dd($schedule);
-
-        $schedule->name = $request->name;
-        $schedule->debuMatain = $request->debuMatain;
-        $schedule->finMatain = $request->finMatain;
-        $schedule->debuMedi = $request->debutMedi;
-        $schedule->finMedi = $request->finMedi;
-        $schedule->nbConge = $request->nbConge;
-        $schedule->save();
-        flash()->success('Success','Schedule has been Updated successfully !');
-        return redirect()->route('schedule.index');
-
+     
+            $schedule->name = $request->name;
+            $schedule->debuMatain = $request->debuMatain;
+            $schedule->finMatain = $request->finMatain;
+            $schedule->debuMedi = $request->debutMedi;
+            $schedule->finMedi = $request->finMedi;
+            $schedule->nbConge = $request->nbConge;
+            $schedule->save();
+            flash()->success('Success','Schedule has been Updated successfully !');
+            return redirect()->route('schedule.index');
+        
 
     }
 

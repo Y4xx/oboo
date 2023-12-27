@@ -34,11 +34,16 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::get('/sheet-report', '\App\Http\Controllers\CheckController@sheetReport')->name('sheet-report');
     Route::post('check-store','\App\Http\Controllers\CheckController@CheckStore')->name('check_store');
 
+    Route::get('/demande_congeé','\App\Http\Controllers\DemandeCongeController@index')->name("demande_congeé");
+    Route::post('/demande_congeé/accepter/{id}','\App\Http\Controllers\DemandeCongeController@accepter');
+    Route::post('/demande_congeé/refuser/{id}','\App\Http\Controllers\DemandeCongeController@refuser');
+
+
 });
 Route::middleware(['auth','isEmp'])->group(function () {
   Route::get('/employer', [EmployeeController::class, 'EmployeeIU'])->name('EmployeeIU.index');
   Route::any('/Pointer', [PointageController::class, 'Pointer'])->name('pointer');
-  
+  Route::get('/demande_congeé/ajouter','\App\Http\Controllers\DemandeCongeController@ajouter');
 });
   
   

@@ -38,10 +38,7 @@
                                 </div>
                             </div>
                          </div>
-                       
-                        
-                    
-                        
+                                              
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="salaire">Salaire</label>
@@ -60,7 +57,7 @@
                             <select class="form-control" id="idtype_employer" name="idtype_employer" required>
                                 <option value="" selected>- Select -</option>
                                 @foreach($schedules as $schedule)
-                                <option value="{{$schedule->id}}">{{$schedule->type_nom}}</option>
+                                    <option value="{{$schedule->id}}">{{$schedule->type_nom}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -22,6 +22,10 @@ class Employee extends Model
     {
         return $this->belongsTo(Type_Employes::class,'idtype_employer','id');
     }
+    public function demandes()
+    {
+        return $this->hasMany(demandecongée::class);
+    }
 
 
 

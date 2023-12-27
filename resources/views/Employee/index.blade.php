@@ -99,6 +99,7 @@
             {{ session('error') }}
         </div>
     @endif
+
         <div class="row d-flex justify-content-center">
           <div class="col-lg-8">
             <h2 class="fw-bold mb-5">Bonjour {{Auth::user()->name}}</h2>
@@ -113,6 +114,15 @@
                           <button class="btn btn-primary btn-block mb-4 btn-lg" data-bs-toggle="modal" data-bs-target="#modal-2">Demande Conge</button>
                     </div>
                 </div>
+                @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
           </div>
         </div>
       </div>
@@ -161,22 +171,28 @@
                         <h5 class="modal-title center">Demande Conge</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="row container my-2">
-                        <div class="form-outline col-md-6">
-                            <label class="form-label" for="form2Example1">Date de debut</label>
-                            <input type="date" id="form2Example1" class="form-control"/>
-                          </div>
-              
-                          <div class="form-outline col-md-6 ">
-                              <label class="form-label" for="form2Example2">Date de fin</label>
-                            <input type="date" id="form2Example2" class="form-control" />
-                          </div>
+                    <form action="demande_congeé/ajouter">
+                        <div class="row container my-2">
+                            <div class="form-outline col-md-6">
+                                <label class="form-label" for="form2Example1">Date de debut</label>
+                                <input type="date" id="form2Example1" class="form-control" name="date_debut" required/>
+                            </div>
+                
+                            <div class="form-outline col-md-6 ">
+                                <label class="form-label" for="form2Example2">Date de fin</label>
+                                <input type="date" id="form2Example2" class="form-control" name="date_fin" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Commentaire</label>
+                                <textarea name="comment" class="form-control" id="comment" cols="30" rows="5" required></textarea>
+                            </div>
 
-                          <div class="form-outline col-md-12 my-3">
-                              <button class="btn btn-primary btn-block btn-lg">Demander</button>
-                          </div>
+                            <div class="form-outline col-md-12 my-3">
+                                <button class="btn btn-primary btn-block btn-lg" type="submit">Demander</button>
+                            </div>
 
-                    </div>
+                        </div>
+                    </form>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                         </div>

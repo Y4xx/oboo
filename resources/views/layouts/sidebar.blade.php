@@ -24,6 +24,15 @@
                                    
                                 </ul> -->
                             </li>
+                            <li>
+                                <a href="/demande_congeé" class="waves-effect"><i class="ti-calendar"></i><span> Demande congée <span class="float-right menu-arrow"></span> </span></a>
+                                <!-- <ul class="submenu">
+                                    <li>
+                                        <a href="/employees" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="dripicons-view-apps"></i><span>Employees List</span></a>
+                                    </li>
+                                   
+                                </ul> -->
+                            </li>
 
                             <li class="menu-title">Management</li>
                             <li>
