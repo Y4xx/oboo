@@ -83,7 +83,8 @@
           margin-bottom: 5rem;
           ">
     <div class="profile-img">
-        <img src="https://th.bing.com/th/id/OIP.CbyofhapadSWo3-GT9o4VwHaHa?rs=1&pid=ImgDetMain"
+        {{-- <img src="https://th.bing.com/th/id/OIP.CbyofhapadSWo3-GT9o4VwHaHa?rs=1&pid=ImgDetMain" --}}
+        <img src="{{ asset('images_profile/'.Auth::user()->Employer->photo_profile)}}"
             alt="Profile image" class="img-fluid rounded-circle rounded-circle border border-4 border-white">
             
     </div>
@@ -101,7 +102,7 @@
     @endif
         <div class="row d-flex justify-content-center">
           <div class="col-lg-8">
-            <h2 class="fw-bold mb-5">Bonjour {{Auth::user()->name}}</h2>
+            <h2 class="fw-bold mb-5">Bonjour {{Auth::user()->Employer->fullname}}</h2>
 
 
 

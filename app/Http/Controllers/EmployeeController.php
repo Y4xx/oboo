@@ -40,12 +40,14 @@ class EmployeeController extends Controller
         $employee->password = str_replace(' ', '', $request->fullname);
         $employee->photo_profile =$nomPhoto;
         $employee->save();
-
-
+        // dd($employee->id);
+        
         $user = new User;
         $user->name = $request->fullname;
         $user->email = $request->email;
+        $user->photo_profile =$nomPhoto;
         $user->type = 'employer';
+        $user->employerId = $employee->id;
         $user->password = Hash::make(str_replace(' ', '', $request->fullname));
         $user->save();
 
