@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\demandecongée;
 use App\Models\Employee;
 use App\Models\Schedule;
 use App\Models\Type_Employes;
@@ -16,9 +18,19 @@ class EmployeeController extends Controller
    
     public function index()
     {
-       $types = Type_Employes::all();
-    //    dd(Employee::all());
         return view('admin.employee')->with(['employees'=> Employee::all(), 'schedules'=>Type_Employes::all()]);
+    }
+    public function employe_congé()
+    {
+        $person_conges=demandecongée::where('acceptation', 1)->where(function ($query) {
+            $query->whereDate('date_debut', '<=', date('Y-m-d'))
+                  ->WhereDate('date_fin', '>', date('Y-m-d'));})->get();
+        
+        return view('admin.employee')->with([
+            'demandes' => $person_conges,
+            'schedules' => Type_Employes::all()
+        ]); 
+         
     }
 
     public function store(EmployeeRec $request)

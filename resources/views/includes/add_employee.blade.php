@@ -1,4 +1,5 @@
 <!-- Add -->
+@if(count($schedules)>0)
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -82,3 +83,32 @@
     </div>
 </div>
 </div>
+@else 
+<div class="modal fade" id="addnew">
+    
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header " style="align-items: center">
+                
+                <h4 class="modal-title "><span class="employee_id">Error</span></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        @csrf
+                    
+                        <div class="text-center">
+                            <h6>Impossible d'ajouter un employer il faut ajouter un type d'employer</h6>
+                        
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
+                            class="fa fa-close"></i> Close</button>
+                            <i href="type_employes"><button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal"> Ajouter Type Employer</button></i>
+                    </form>
+                </div>
+            </div>
+
+</div>
+@endif

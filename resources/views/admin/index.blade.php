@@ -26,6 +26,7 @@
                                             <h5 class="font-16 text-uppercase mt-0 text-white-50">Total <br> Employees</h5>
                                             <h4 class="font-500">{{$data[0]}} </h4>
                                             <span class="ti-user" style="font-size: 71px"></span>
+                                           
                                               
                                         </div>
                                         <div class="pt-2">
@@ -34,6 +35,7 @@
                                             </div>
                                             <p class="text-white-50 mb-0">More info</p>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>

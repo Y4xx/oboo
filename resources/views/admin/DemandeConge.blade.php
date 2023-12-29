@@ -55,16 +55,12 @@
                                                                 <td>{{$demande->date_debut}}</td>
                                                                 <td>{{$demande->date_fin}}</td>
                                                                 <td>{{$demande->commentaire}}</td>
-                                                                @if ($demande->acceptation==1)
-                                                                    <td >Accepter</td>
-                                                                @elseif ($demande->acceptation==0)
-                                                                    <td>Refuser</td>
-                                                                @elseif($demande->reponse==0)
+                                                               
                                                                     <td>
                                                                         <a href="#accepter{{$demande->id}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i> Accepter</a>
                                                                         <a href="#refuser{{$demande->id}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i> Refuser</a>
                                                                     </td>
-                                                                @endif
+                                                              
                                                             </tr>
                                                         @endforeach
                                                    
