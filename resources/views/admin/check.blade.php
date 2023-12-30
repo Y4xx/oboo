@@ -51,8 +51,8 @@
                                 <input type="hidden" name="emp_id" value="{{ $employee->id }}">
 
                                 <tr>
-                                    <td>{{ $employee->name }}</td>
-                                    <td>{{ $employee->position }}</td>
+                                    <td>{{ $employee->fullname }}</td>
+                                    <td>{{ $employee->type->type_nom }}</td>
                                     <td>{{ $employee->id }}</td>
 
 
@@ -60,18 +60,23 @@
 
 
                                         @php
-                                            
                                             $date_picker = \Carbon\Carbon::createFromDate($today->year, $today->month, $i)->format('Y-m-d');
                                             
-                                            $check_attd = \App\Models\Attendance::query()
-                                                ->where('emp_id', $employee->id)
-                                                ->where('attendance_date', $date_picker)
-                                                ->first();
+                                            $check_attd = \App\Models\Pointage::query()
+                                            ->where('idemploye', $employee->id)
+                                            ->where('dateDePointage', $date_picker)
+                                            ->first();
+
+
+                                            // $check_attd = \App\Models\Attendance::query()
+                                            //     ->where('emp_id', $employee->id)
+                                            //     ->where('attendance_date', $date_picker)
+                                            //     ->first();
                                             
-                                            $check_leave = \App\Models\Leave::query()
-                                                ->where('emp_id', $employee->id)
-                                                ->where('leave_date', $date_picker)
-                                                ->first();
+                                            // $check_leave = \App\Models\Leave::query()
+                                            //     ->where('emp_id', $employee->id)
+                                            //     ->where('leave_date', $date_picker)
+                                            //     ->first();
                                             
                                         @endphp
                                         <td>
@@ -79,12 +84,13 @@
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" id="check_box_attd"
                                                     name="attd[{{ $date_picker }}][{{ $employee->id }}]" type="checkbox"
-                                                    @if (isset($check_attd)) checked @endif value="1">
+                                                    @if (isset($check_attd->tempsMatain_1) && isset($check_attd->tempsMatain_2)) checked @endif value="1">
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" id="check_box_leave"
-                                                    name="leave[{{ $date_picker }}][{{ $employee->id }}]" type="checkbox"
-                                                    @if (isset($check_leave)) checked @endif value="1">
+                                                    name="attd[{{ $date_picker }}][{{ $employee->id }}]" type="checkbox"
+                                                    @if (isset($check_attd->tempsMedi_1) && isset($check_attd->tempsMedi_2)) checked @endif value="2">
+                                                    {{-- {{$check_attd->tempsMedi_1}} --}}
                                             </div>
                                             
 
