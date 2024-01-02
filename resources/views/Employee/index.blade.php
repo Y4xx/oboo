@@ -60,6 +60,7 @@
 }   
 </style>
 <body>
+
 <!-- Section: Design Block -->
 <section class="text-center">
     <!-- Background image -->
@@ -90,23 +91,18 @@
     </div>
       <div class="card-body py-2 px-md-5">
         @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-    
-    @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <div class="row d-flex justify-content-center">
           <div class="col-lg-8">
             <h2 class="fw-bold mb-5">Bonjour {{Auth::user()->Employer->fullname}}</h2>
-
-
-
                 <div class="row">
                     <div class="col-md-6 mb-4">
                           <button class="btn btn-primary btn-block mb-4 btn-lg" data-bs-toggle="modal" data-bs-target="#modal-1">Pointage</button>

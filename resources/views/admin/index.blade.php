@@ -68,17 +68,17 @@
                                             <div class="float-left mini-stat-img mr-4">
                                                 <i class=" ti-check-box " style="font-size: 20px"></i>
                                             </div>
-                                            <h5 class="font-16 text-uppercase mt-0 text-white-50">On Time <br> Today</h5>
-                                            <h4 class="font-500">{{$data[1]}} <i class=" text-success ml-2"></i></h4>
-                                            <span class="peity-donut" data-peity='{ "fill": ["#02a499", "#f2f2f2"], "innerRadius": 28, "radius": 32 }' data-width="72" data-height="72">{{$data[1]}}/{{count($data)}}</span>
+                                            <h5 class="font-16 text-uppercase mt-0 text-white-50">Employés   <br>en  congés</h5>
+                                            <h4 class="font-500">{{$data[4]}} <i class=" text-success ml-2"></i></h4>
+                                            <span class="peity-donut" data-peity='{ "fill": ["#02a499", "#f2f2f2"], "innerRadius": 28, "radius": 32 }' data-width="72" data-height="72">{{$data[4]}}/{{$data[0]}}</span>
                                              
                                         </div>
                                         <div class="pt-2">
                                             <div class="float-right">
-                                                <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
+                                                <a href="employe_congé" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
                                             </div>
         
-                                            <p class="text-white-50 mb-0">More info</p>
+                                           <p class="text-white-50 mb-0">More info</p>
                                         </div>
                                     </div>
                                 </div>

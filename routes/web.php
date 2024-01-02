@@ -41,9 +41,13 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
     Route::get('/historique_congé','\App\Http\Controllers\DemandeCongeController@historique')->name('historique');
     Route::delete('/historique_congé/delete/{id}','\App\Http\Controllers\DemandeCongeController@delete_historique');
-
-
 });
+
+Route::get('/verifier_demande/{hash}','\App\Http\Controllers\DemandeCongeController@verification')->name('verf');
+Route::get('/verifier_demande','\App\Http\Controllers\DemandeCongeController@verification_reponse')->name('verf');
+Route::post('/verifier_demande_accepter/{id_dem}','\App\Http\Controllers\DemandeCongeController@verification_valider');
+
+
 Route::middleware(['auth','isEmp'])->group(function () {
   Route::get('/employer', [EmployeeController::class, 'EmployeeIU'])->name('EmployeeIU.index');
   Route::any('/Pointer', [PointageController::class, 'Pointer'])->name('pointer');

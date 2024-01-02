@@ -25,7 +25,7 @@
                                 </ul> -->
                             </li>
                             <li>
-                                <a href="/demande_congeé" class="waves-effect"><i class="ti-calendar"></i><span> Demande congée <span class="float-right menu-arrow"></span> </span></a>
+                                <a href="/demande_congeé" class="waves-effect"><i class="far fa-edit	"></i><span> Demande de congé<span class="float-right menu-arrow"></span> </span></a>
                                 <!-- <ul class="submenu">
                                     <li>
                                         <a href="/employees" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="dripicons-view-apps"></i><span>Employees List</span></a>
@@ -37,10 +37,10 @@
 
                             <li class="menu-title">Management</li>
                             <li>
-                                        <a href="/schedule" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="ti-time"></i><span>System de Travail</span></a>
+                                        <a href="/schedule" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="ti-time"></i><span>Système de Travail</span></a>
                                     </li>
                                     <li>
-                                        <a href="/type_employes" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="ti-user"></i><span>Type des employés</span></a>
+                                        <a href="/type_employes" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="fas fa-sitemap	"></i><span>Type des employés</span></a>
                                     </li>
                             
 
@@ -75,7 +75,7 @@
                         -->
                         <li class="">
                                 <a href="/historique_congé" class="waves-effect {{ request()->is("leave") || request()->is("leave/*") ? "mm active" : "" }}">
-                                    <i class="dripicons-backspace"></i> <span> Historique Congé </span>
+                                    <i class="far fa-folder			"></i> <span> Historique Congé </span>
                                 </a>
                             </li>
                             <li class="">

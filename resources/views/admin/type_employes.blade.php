@@ -5,17 +5,17 @@
 
 @section('breadcrumb')
 <div class="col-sm-6">
-    <h4 class="page-title text-left">Employees</h4>
+    <h4 class="page-title text-left">Type des Employés</h4>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0);">Employees</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0);">Employees List</a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0);">Management</a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0);">Type des Employés</a></li>
   
     </ol>
 </div>
 @endsection
 @section('button')
-<a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="mdi mdi-plus mr-2"></i>Add</a>
+<a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="mdi mdi-plus mr-2"></i>Ajouter</a>
 @endsection
 
 @section('content')
@@ -50,8 +50,8 @@
                                                             <td>{{$type->type_nom}}</td>
                                                             <td>{{$type->Heure_de_travaille_par_jour}}h</td>
                                                             <td>
-                                                                <a href="#edit{{$type->id}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i> Edit</a>
-                                                                <a href="#delete{{$type->id}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i> Delete</a>
+                                                                <a href="#edit{{$type->id}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i> Modifier</a>
+                                                                <a href="#delete{{$type->id}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i> Supprimer</a>
                                                             </td>
                                                         </tr>
                                                         @endforeach

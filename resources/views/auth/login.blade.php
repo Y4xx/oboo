@@ -8,7 +8,7 @@
                 <h4 class="font-20 m-b-5">Welcome Back !</h4>
                 <p class="text-white-50 mb-4">Sign in Sign in as Admin to AMS</p>
                 <a href="{{ route('welcome') }}" class="logo logo-admin">
-                    <h1>A</h1>
+                    <h1>OB</h1>
                 </a>
             </div>
             <div class="account-card-content">
@@ -26,6 +26,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                       
                     </div>
 
                     <div class="form-group">

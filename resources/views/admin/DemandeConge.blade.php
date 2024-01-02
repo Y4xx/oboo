@@ -5,10 +5,10 @@
 
 @section('breadcrumb')
 <div class="col-sm-6">
-    <h4 class="page-title text-left">Demande de Congé</h4>
+    <h4 class="page-title text-left">Demande de congé</h4>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0);">Demande de Cogé</a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0);">Demande de congé</a></li>
   
     </ol>
 </div>
@@ -28,8 +28,6 @@
     </div>
 @endif
 <!--End showing Validation Errors here-->
-
-
                       <div class="row">
                             <div class="col-12">
                                 <div class="card">

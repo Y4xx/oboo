@@ -28,7 +28,8 @@ class EmployeeController extends Controller
         
         return view('admin.employee')->with([
             'demandes' => $person_conges,
-            'schedules' => Type_Employes::all()
+            'schedules' => Type_Employes::all(),
+            'date_auj'=>date('Y-m-d')
         ]); 
          
     }

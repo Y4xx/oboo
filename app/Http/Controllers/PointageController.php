@@ -22,10 +22,9 @@ class PointageController extends Controller
 
         $interval = new DateInterval('PT30M'); // 30 minutes interval
         $system = Systeme_de_travail::first(); 
-
+    if(isset($system->debuMatain)){
         $origin = Carbon::parse($system->debuMatain);
         $originPlus = Carbon::parse($system->debuMatain)->addMinutes(30);
-        
         // var_dump($originPlus);
         // dd($originPlus);
         // dd($addMinutesAdd30);
@@ -37,9 +36,6 @@ class PointageController extends Controller
         // }else{
         //     dd(false);
         // }
-        
-
-
         $p = Pointage::where("idemploye", $request->idemploye)->where('dateDePointage', $todayDate)->exists();
         if($p){
             $line = Pointage::where("idemploye", $request->idemploye)->where('dateDePointage', $todayDate)->first();
@@ -60,11 +56,6 @@ class PointageController extends Controller
                     }
                 }
             }
-
-
-
-
-
         }else{
 
             if($now->between(Carbon::parse($system->debuMatain), $this->Add30($system->debuMatain))){
@@ -78,12 +69,12 @@ class PointageController extends Controller
                 // dd('You Are so late for the <debuMatain>');
             }
         }
-        
-        
-        // flash()->success('Success','Successfully Ponter !');
         return redirect()->route('EmployeeIU.index')->with('success' , 'Successfully Ponter !');
-        }
-
+        
+    }else{
+        return redirect()->route('EmployeeIU.index')->with('error', 'Le système de travaille pas encours déterminer par l\'entreprise' );
+    }
+}
     public function Add30(string $time){
         return Carbon::parse($time)->addMinutes(30);
     }
