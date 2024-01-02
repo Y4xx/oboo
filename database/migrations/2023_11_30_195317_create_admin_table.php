@@ -20,7 +20,6 @@ class CreateAdminTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->rememberToken();
-            // define the foreign key
             $table->timestamps();
         });
     }

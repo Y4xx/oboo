@@ -1,4 +1,5 @@
 <!-- Add -->
+@if(count($schedules)>0)
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -38,10 +39,7 @@
                                 </div>
                             </div>
                          </div>
-                       
-                        
-                    
-                        
+                                              
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="salaire">Salaire</label>
@@ -60,7 +58,7 @@
                             <select class="form-control" id="idtype_employer" name="idtype_employer" required>
                                 <option value="" selected>- Select -</option>
                                 @foreach($schedules as $schedule)
-                                <option value="{{$schedule->id}}">{{$schedule->type_nom}}</option>
+                                    <option value="{{$schedule->id}}">{{$schedule->type_nom}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -85,3 +83,32 @@
     </div>
 </div>
 </div>
+@else 
+<div class="modal fade" id="addnew">
+    
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header " style="align-items: center">
+                
+                <h4 class="modal-title "><span class="employee_id">Error</span></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        @csrf
+                    
+                        <div class="text-center">
+                            <h6>Impossible d'ajouter un employer il faut ajouter un type d'employer</h6>
+                        
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i
+                            class="fa fa-close"></i> Close</button>
+                            <i href="type_employes"><button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal"> Ajouter Type Employer</button></i>
+                    </form>
+                </div>
+            </div>
+
+</div>
+@endif

@@ -8,15 +8,22 @@
     <h4 class="page-title text-left">Employees</h4>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-      
-        <li class="breadcrumb-item"><a href="javascript:void(0);">Employees</a></li>
+       
+            <li class="breadcrumb-item"><a href="javascript:void(0);">Employees</a></li>
+        
+        
   
     </ol>
 </div>
 @endsection
 @section('button')
-<a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="mdi mdi-plus mr-2"></i>Add</a>
-        
+
+@if(isset($employees))
+    <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="mdi mdi-plus mr-2"></i>Add</a>
+    <a href="/employe_congé"  class="btn btn-primary btn-sm btn-flat">Employés en congé</a>  
+@else
+<a href="/employees"  class="btn btn-primary btn-sm btn-flat">Employés </a>
+@endif
 
 @endsection
 
@@ -40,7 +47,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                        
+                                        @if(isset($employees))
                                                     <thead>
                                                     <tr>
                                                         <th data-priority="1">Employee ID</th>
@@ -76,6 +83,37 @@
                                                         @endforeach
                                                    
                                                     </tbody>
+                                                @else 
+                                                <thead>
+                                                    <tr>
+                                                        <th data-priority="2">Nom complet</th>
+                                                        <th data-priority="3">Numero de Telephone</th>
+                                                        <th data-priority="6">Email</th>
+                                                        <th data-priority="7">Type d'employee</th>
+                                                        <th data-priority="5">Date de debut de congé</th> <th data-priority="5">Date de fin de congé</th>
+                                                        <th data-priority="9">Nombre jours rester</th>
+                                                        <th data-priority="9">Congés</th>
+                                                     
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach( $demandes as $demande)
+                                                            <tr>
+                                                               
+                                                                <td>{{$demande->employe->fullname}}</td>
+                                                                <td>{{$demande->employe->numTel}}</td>
+                                                                <td>{{$demande->employe->email}}</td>
+                                                                <td>{{$demande->employe->Type->type_nom}}</td>
+                                                                <td>{{$demande->date_debut}}</td> <td>{{$demande->date_fin}}</td>
+                                                                <td>
+                                                                    {{ \Carbon\Carbon::now()->diffInDays(\Carbon\Carbon::parse($demande->date_fin)) }} jours
+                                                                </td>
+                                                                
+                                                               <td>En congé</td>
+                                                               
+                                                            </tr>
+                                                        @endforeach
+                                                @endif
                                                 </table>
                                             </div>
                                         </div>
@@ -84,10 +122,13 @@
                             </div> <!-- end col -->
                         </div> <!-- end row -->    
                                     
+@if(isset($employees))
+    @foreach( $employees as $employee)
+        @include('includes.edit_delete_employee')
+    @endforeach
+@endif
 
-@foreach( $employees as $employee)
-@include('includes.edit_delete_employee')
-@endforeach
+
 
 @include('includes.add_employee')
 

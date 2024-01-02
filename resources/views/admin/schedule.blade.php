@@ -36,6 +36,11 @@
         </ul>
     </div>
 @endif
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 
 {{-- {{Auth::user()->id}} --}}
 <!--End showing Validation Errors here-->

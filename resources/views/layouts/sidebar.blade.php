@@ -16,7 +16,7 @@
                             
 
                             <li>
-                                <a href="/employees" class="waves-effect"><i class="ti-user"></i><span> Employees <span class="float-right menu-arrow"></span> </span></a>
+                                <a href="/employees" class="waves-effect"><i class="ti-user"></i><span> Employés <span class="float-right menu-arrow"></span> </span></a>
                                 <!-- <ul class="submenu">
                                     <li>
                                         <a href="/employees" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="dripicons-view-apps"></i><span>Employees List</span></a>
@@ -24,6 +24,16 @@
                                    
                                 </ul> -->
                             </li>
+                            <li>
+                                <a href="/demande_congeé" class="waves-effect"><i class="ti-calendar"></i><span> Demande congée <span class="float-right menu-arrow"></span> </span></a>
+                                <!-- <ul class="submenu">
+                                    <li>
+                                        <a href="/employees" class="waves-effect {{ request()->is("employees") || request()->is("/employees/*") ? "mm active" : "" }}"><i class="dripicons-view-apps"></i><span>Employees List</span></a>
+                                    </li>
+                                   
+                                </ul> -->
+                            </li>
+                           
 
                             <li class="menu-title">Management</li>
                             <li>
@@ -63,6 +73,11 @@
                                 </a>
                             </li>
                         -->
+                        <li class="">
+                                <a href="/historique_congé" class="waves-effect {{ request()->is("leave") || request()->is("leave/*") ? "mm active" : "" }}">
+                                    <i class="dripicons-backspace"></i> <span> Historique Congé </span>
+                                </a>
+                            </li>
                             <li class="">
                                 <a href="/leave" class="waves-effect {{ request()->is("leave") || request()->is("leave/*") ? "mm active" : "" }}">
                                     <i class="dripicons-backspace"></i> <span> Leave </span>
