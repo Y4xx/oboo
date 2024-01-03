@@ -15,8 +15,12 @@ class PointageController extends Controller
 {
     public function Pointer(Request $request){
         // dd(Carbon::now()->format('Y-m-d'));
+        $now = Carbon::parse("12:20:00");
         $todayDate = Carbon::now()->format('Y-m-d');
+<<<<<<< HEAD
+=======
         $now = Carbon::parse("08:20:00");
+>>>>>>> 0bd77d73e11512136a4bf80d415d1cf32eed1621
         $todayTime = Carbon::now()->format('H:i:s');
 
 
@@ -25,6 +29,7 @@ class PointageController extends Controller
     if(isset($system->debuMatain)){
         $origin = Carbon::parse($system->debuMatain);
         $originPlus = Carbon::parse($system->debuMatain)->addMinutes(30);
+<<<<<<< HEAD
         // var_dump($originPlus);
         // dd($originPlus);
         // dd($addMinutesAdd30);
@@ -36,19 +41,24 @@ class PointageController extends Controller
         // }else{
         //     dd(false);
         // }
+=======
+        
+
+
+>>>>>>> f6f972257736f4570b2208fc20e01f5c2956f84a
         $p = Pointage::where("idemploye", $request->idemploye)->where('dateDePointage', $todayDate)->exists();
         if($p){
             $line = Pointage::where("idemploye", $request->idemploye)->where('dateDePointage', $todayDate)->first();
             // dd(Auth::user()->id);
-            if($line->tempsMatain_2 === '00:00:00' && $now->between(Carbon::parse($system->finMatain), $this->Add30($system->finMatain))){
+            if(is_null($line->tempsMatain_2) && $now->between(Carbon::parse($system->finMatain), $this->Add30($system->finMatain))){
                 $line->tempsMatain_2 = $todayTime;
                 $line->save();
             }else{
-                if($line->tempsMedi_1 === '00:00:00' && $now->between(Carbon::parse($system->debuMedi), $this->Add30($system->debuMedi))){
+                if(is_null($line->tempsMedi_1) && $now->between(Carbon::parse($system->debuMedi), $this->Add30($system->debuMedi))){
                     $line->tempsMedi_1 = $todayTime;
                     $line->save();
                 }else{
-                    if($line->tempsMedi_2 === '00:00:00' && $now->between(Carbon::parse($system->finMedi), $this->Add30($system->finMedi))){
+                    if(is_null($line->tempsMedi_2) && $now->between(Carbon::parse($system->finMedi), $this->Add30($system->finMedi))){
                         $line->tempsMedi_2 = $todayTime;
                         $line->save();
                     }else{

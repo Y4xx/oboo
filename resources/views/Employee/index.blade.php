@@ -142,7 +142,7 @@
                         </div>
                         <form method="post" action="{{ route("pointer")}}">
                             @csrf
-                            <input type="hidden" name="idemploye" value="{{Auth::user()->id}}">
+                            <input type="hidden" name="idemploye" value="{{Auth::user()->Employer->id}}">
                             <button type="submit" class="btn btn-success btn-lg btn-pointer">Pointer
                                     <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
                                         <style>svg{fill:#ffffff}</style>

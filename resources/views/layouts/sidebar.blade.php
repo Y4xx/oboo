@@ -52,12 +52,12 @@
                             </li> --}}
                             <li class="">
                                 <a href="/check" class="waves-effect {{ request()->is("check") || request()->is("check/*") ? "mm active" : "" }}">
-                                    <i class="dripicons-to-do"></i> <span> Attendance Sheet </span>
+                                    <i class="dripicons-to-do"></i> <span>Attendance sheet</span>
                                 </a>
                             </li>
                             <li class="">
                                 <a href="/sheet-report" class="waves-effect {{ request()->is("sheet-report") || request()->is("sheet-report/*") ? "mm active" : "" }}">
-                                    <i class="dripicons-to-do"></i> <span> Sheet Report </span>
+                                    <i class="dripicons-to-do"></i> <span> Sheet Report</span>
                                 </a>
                             </li>
 

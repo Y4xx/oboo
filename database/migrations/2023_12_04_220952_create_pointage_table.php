@@ -18,14 +18,18 @@ class CreatePointageTable extends Migration
         Schema::create('pointage', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idemploye')->references('id')->on('employes');
-            $table->time('tempsMatain_1')->default('00:00');
-            $table->time('tempsMatain_2')->default('00:00');
-            $table->time('tempsMedi_1')->default('00:00');
-            $table->time('tempsMedi_2')->default('00:00');
+            $table->time('tempsMatain_1')->nullable();
+            $table->time('tempsMatain_2')->nullable();
+            $table->time('tempsMedi_1')->nullable();
+            $table->time('tempsMedi_2')->nullable();
             $table->date('dateDePointage');
             $table->timestamps();
         });
     }
+    // $table->time('tempsMatain_1')->default('00:00');
+    // $table->time('tempsMatain_2')->default('00:00');
+    // $table->time('tempsMedi_1')->default('00:00');
+    // $table->time('tempsMedi_2')->default('00:00');
 
     /**
      * Reverse the migrations.
